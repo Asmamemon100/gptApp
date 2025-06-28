@@ -6,9 +6,9 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import Bubble from '../components/Bubble';
 import CustomHeaderButton from '../components/CustomHeaderButton';
 import KeyboardAvoidingViewContainer from '../components/KeyboardAvoidingViewContainer';
-import colors from './constants/colors';
-import { addUserMessage, getConversation, resetConversation } from './utils/conversationHistoryUtil';
-import { makeChatRequest } from './utils/gptUtils';
+import colors from '../constants/colors';
+import { addUserMessage, getConversation, resetConversation } from '../utils/conversationHistoryUtil';
+import { makeChatRequest } from '../utils/gptUtils';
 
 
 export default function ChatScreen(props){
@@ -251,13 +251,24 @@ export default function ChatScreen(props) {
       setMessageText("");
       setConversation([ ...getConversation() ]);
       
+      // Small delay to show loading animation
+      setTimeout(() => {
+        flatlist.current?.scrollToEnd({ animated: true });
+      }, 100);
+      
       await makeChatRequest();
     } catch (error) {
       console.log(error);
     }
     finally {
-      setConversation([ ...getConversation() ]);
-      setLoading(false);
+      // Small delay before hiding loading for smooth transition
+      setTimeout(() => {
+        setConversation([ ...getConversation() ]);
+        setLoading(false);
+        setTimeout(() => {
+          flatlist.current?.scrollToEnd({ animated: true });
+        }, 100);
+      }, 300);
     }
     
   }, [messageText]);
@@ -366,10 +377,9 @@ const styles = StyleSheet.create({
     paddingVertical: 10
   },
   loadingContainer: {
-    position: 'absolute',
-    bottom: 0,
-    width: '100%',
-    alignItems: 'center'
+    marginHorizontal: 15,
+    paddingVertical: 5,
+    alignItems: 'flex-start'
   },
   emptyContainer: {
     flex: 1,

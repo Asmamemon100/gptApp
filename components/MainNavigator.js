@@ -89,7 +89,7 @@ const options = {
 
 const Tab = createBottomTabNavigator();
 
-export default MainNavigator = () => {
+const MainNavigator = () => {
     return (
         <Tab.Navigator>
           <Tab.Screen name="Chat" component={ChatScreen} options={
@@ -119,3 +119,5 @@ export default MainNavigator = () => {
         </Tab.Navigator>
     );
 }
+
+export default MainNavigator;
