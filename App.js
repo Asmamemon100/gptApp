@@ -80,7 +80,7 @@ SplashScreen.preventAutoHideAsync();
 export default function App() {
 
   const [fontsLoaded] = useFonts({
-    "black": require("./assets/fonts//Poppins-Black.ttf"),
+    "black": require("./assets/fonts/Poppins-Black.ttf"),
     "blackItalic": require("./assets/fonts/Poppins-BlackItalic.ttf"),
     "bold": require("./assets/fonts/Poppins-Bold.ttf"),
     "boldItalic": require("./assets/fonts/Poppins-BoldItalic.ttf"),
