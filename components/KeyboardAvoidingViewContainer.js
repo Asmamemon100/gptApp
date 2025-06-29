@@ -18,7 +18,7 @@ export default KeyboardAvoidingViewContainer;
 */
 import { KeyboardAvoidingView, Platform } from "react-native";
 
-export default KeyboardAvoidingViewContainer = (props) => {
+const KeyboardAvoidingViewContainer = (props) => {
     
     if (Platform.OS === 'android') {
         return props.children;
@@ -31,3 +31,5 @@ export default KeyboardAvoidingViewContainer = (props) => {
         { props.children }
     </KeyboardAvoidingView>
 }
+
+export default KeyboardAvoidingViewContainer;

@@ -14,9 +14,9 @@
   "include": [
     "**/*.ts",
     "**/*.tsx",
-    ".expo/types/**/*.ts",
-    "expo-env.d.ts"
-, "constants/Colors.js" 
- ],
-  "exclude": ["node_modules"]
+    "constants/Colors.js"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

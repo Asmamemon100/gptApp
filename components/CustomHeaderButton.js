@@ -20,7 +20,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import { HeaderButton } from "react-navigation-header-buttons";
 import colors from "../constants/colors";
 
-export default CustomHeaderButton = (props) => {
+const CustomHeaderButton = (props) => {
     return <HeaderButton
             { ...props }
             IconComponent={FontAwesome}
@@ -28,3 +28,5 @@ export default CustomHeaderButton = (props) => {
             color={props.color ?? colors.primary}
         />
 }
+
+export default CustomHeaderButton;

@@ -2,8 +2,8 @@ import { addAssistantMessage, getConversation } from "./conversationHistoryUtil"
 
 export const makeChatRequest = async () => {
   const messages = getConversation();
-
-  const response = await fetch("http://192.168.1.100:11434/api/chat", { // ← 🔁 Replace with your local IP
+//http://192.168.1.100:11434/api/chat
+  const response = await fetch("http://localhost:11434/api/chat", { // Windows Ollama server
     method: "POST",
     headers: {
       "Content-Type": "application/json"
