@@ -203,12 +203,13 @@ emptyContainerText: {
 
 */
 
-import { Feather, FontAwesome5 } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import Bubble from '../components/Bubble';
 import CustomHeaderButton from '../components/CustomHeaderButton';
+import InputContainer from '../components/InputContainer';
 import KeyboardAvoidingViewContainer from '../components/KeyboardAvoidingViewContainer';
 import colors from '../constants/colors';
 import { addUserMessage, getConversation, resetConversation } from '../utils/conversationHistoryUtil';
@@ -325,22 +326,13 @@ export default function ChatScreen(props) {
 
           </View>
 
-          <View style={styles.inputContainer}>
+          <InputContainer 
+            onChangeText = {(text) => setMessageText(text)}
+            value={messageText}
+            onPress={sendMessage}
+            placeholder="Type a message....."
+          />
 
-            <TextInput
-              style={styles.textbox}
-              placeholder="Type a message..."
-              onChangeText={(text) => setMessageText(text)}
-              value={messageText}
-            />
-
-            <TouchableOpacity
-              style={styles.sendButton}
-              onPress={sendMessage}>
-              <Feather name="send" size={18} color="white" />
-            </TouchableOpacity>
-
-          </View>
 
       </View>
     </KeyboardAvoidingViewContainer>
@@ -350,25 +342,10 @@ export default function ChatScreen(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.greyBg,
+    backgroundColor: colors.greyBg
   },
-  inputContainer: {
-    flexDirection: 'row',
-    backgroundColor: 'white',
-    padding: 10
-  },
-  sendButton: {
-    backgroundColor: colors.primary,
-    width: 35,
-    height: 35,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 50,
-  },
-  textbox: {
-    flex: 1,
-    fontFamily: 'regular'
-  },
+  
+ 
   messagesContainer: {
     flex: 1,
   },
@@ -392,4 +369,5 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: 'regular'
   }
-});
+}
+);
